@@ -1,0 +1,28 @@
+<!-- DonateKart Request Page Placeholder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DonateKart - Request Item</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Request an Item</h1>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="donate.html">Donate Item</a> |
+        <a href="items.html">View Items</a> |
+        <a href="my-requests.html">My Requests</a>
+    </nav>
+    <div id="itemDetails"></div>
+    <form id="requestForm" style="display:none;">
+        <label>Your Name: <input type="text" name="requestorName" required></label><br>
+        <label>Contact Info: <input type="text" name="requestorContact" required></label><br>
+        <button type="submit">Request Item</button>
+    </form>
+    <div id="message"></div>
+    <script src="js/user-profile.js"></script>
+    <script src="js/request.js"></script>
+</body>
+</html> 

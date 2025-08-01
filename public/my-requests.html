@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DonateKart - My Requests</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/requests-page.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart logo-icon"></i>
+                DonateKart
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="donate.html">Donate Item</a>
+                <a href="items.html">View Items</a>
+                <a href="my-requests.html" class="active">My Requests</a>
+                <a href="my-donations.html">My Donations</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="requests-page">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">
+                    <i class="fas fa-hand-paper"></i>
+                </div>
+                <h1>My Requests</h1>
+                <p>Track your donation requests and see their status. Manage your wishlist and connect with generous donors.</p>
+            </div>
+
+            <!-- User Identification Form -->
+            <div class="user-form-section" id="userFormSection">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Access Your Requests</h2>
+                        <p>Enter your name to view and manage your donation requests</p>
+                    </div>
+                    
+                    <form id="requestorForm" class="user-form">
+                        <div class="form-group">
+                            <label for="requestorName" class="form-label">
+                                <i class="fas fa-user"></i>
+                                Your Name
+                            </label>
+                            <input type="text" id="requestorName" name="requestorName" class="form-input" placeholder="Enter your full name" required>
+                            <span class="form-help">This should match the name you used when making requests</span>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-search"></i>
+                                <span class="btn-text">View My Requests</span>
+                                <div class="btn-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="help-section">
+                    <div class="help-card">
+                        <h3>
+                            <i class="fas fa-question-circle"></i>
+                            How It Works
+                        </h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Enter the name you used when requesting items
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                View all your active and completed requests
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Track the status of each request
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Connect with donors who responded
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Requests List Section -->
+            <div class="requests-section" id="requestsSection" style="display: none;">
+                <div class="requests-header">
+                    <h2 id="requestsTitle">Your Requests</h2>
+                    <div class="requests-actions">
+                        <button id="newRequestBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i>
+                            New Request
+                        </button>
+                        <button id="changeUserBtn" class="btn btn-secondary">
+                            <i class="fas fa-user-edit"></i>
+                            Change User
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="requests-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="pendingCount">0</div>
+                            <div class="stat-label">Pending</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="matchedCount">0</div>
+                            <div class="stat-label">Matched</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="completedCount">0</div>
+                            <div class="stat-label">Completed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="requestsList" class="requests-grid">
+                    <!-- Requests will be loaded here -->
+                </div>
+                
+                <div id="loadingRequests" class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Loading your requests...</span>
+                </div>
+                
+                <div id="noRequests" class="no-requests" style="display: none;">
+                    <div class="no-requests-icon">
+                        <i class="fas fa-hand-paper"></i>
+                    </div>
+                    <h3>No requests found</h3>
+                    <p>You haven't made any donation requests yet. Start by browsing available items or creating a new request.</p>
+                    <div class="no-requests-actions">
+                        <a href="items.html" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Browse Items
+                        </a>
+                        <button id="createRequestBtn" class="btn btn-secondary">
+                            <i class="fas fa-plus"></i>
+                            Create Request
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Request Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Request</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="newRequestForm" class="request-form">
+                    <div class="form-group">
+                        <label for="requestItemName" class="form-label">
+                            <i class="fas fa-tag"></i>
+                            What do you need?
+                        </label>
+                        <input type="text" id="requestItemName" name="itemName" class="form-input" placeholder="e.g., Winter jacket, Study table, etc." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requestDescription" class="form-label">
+                            <i class="fas fa-align-left"></i>
+                            Description
+                        </label>
+                        <textarea id="requestDescription" name="description" class="form-input" rows="3" placeholder="Describe what you're looking for and why you need it..." required></textarea>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="requestCategory" class="form-label">
+                                <i class="fas fa-list"></i>
+                                Category
+                            </label>
+                            <select id="requestCategory" name="category" class="form-input" required>
+                                <option value="">Select category</option>
+                                <option value="clothing">Clothing & Accessories</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="books">Books & Media</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="toys">Toys & Games</option>
+                                <option value="sports">Sports & Outdoors</option>
+                                <option value="kitchen">Kitchen & Home</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="requestUrgency" class="form-label">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                Urgency
+                            </label>
+                            <select id="requestUrgency" name="urgency" class="form-input" required>
+                                <option value="low">Low - Can wait</option>
+                                <option value="medium">Medium - Needed soon</option>
+                                <option value="high">High - Urgent need</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requestLocation" class="form-label">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Your Location
+                        </label>
+                        <input type="text" id="requestLocation" name="location" class="form-input" placeholder="City, State or Area" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelRequest">Cancel</button>
+                <button class="btn btn-primary" id="submitRequest">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Request
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="message" class="message-popup"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heart"></i>
+                        DonateKart
+                    </div>
+                    <p>Building communities through generosity</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate Item</a></li>
+                        <li><a href="items.html">Browse Items</a></li>
+                        <li><a href="my-requests.html">My Requests</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 DonateKart &mdash; Made with ❤️ for a better world
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/user-profile.js"></script>
+    <script src="js/my-requests.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

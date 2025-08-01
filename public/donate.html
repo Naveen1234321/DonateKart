@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DonateKart - Donate Item</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart logo-icon"></i>
+                DonateKart
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="donate.html" class="active">Donate Item</a>
+                <a href="items.html">View Items</a>
+                <a href="my-requests.html">My Requests</a>
+                <a href="my-donations.html">My Donations</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main class="donate-page">
+        <div class="container">
+            <div class="page-header">
+                <div class="page-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h1>Share Your Generosity</h1>
+                <p>Help someone in need by donating an item you no longer use. Every donation makes a difference!</p>
+            </div>
+
+            <div class="donate-content">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Item Details</h2>
+                        <p>Tell us about the item you'd like to donate</p>
+                    </div>
+
+                    <form id="donationForm" class="donation-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name" class="form-label">
+                                    <i class="fas fa-tag"></i>
+                                    Item Name
+                                </label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                                <span class="form-error"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category" class="form-label">
+                                    <i class="fas fa-list"></i>
+                                    Category
+                                </label>
+                                <select id="category" name="category" class="form-input" required>
+                                    <option value="">Select a category</option>
+                                    <option value="clothing">Clothing & Accessories</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="books">Books & Media</option>
+                                    <option value="furniture">Furniture</option>
+                                    <option value="toys">Toys & Games</option>
+                                    <option value="sports">Sports & Outdoors</option>
+                                    <option value="kitchen">Kitchen & Home</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="form-error"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-align-left"></i>
+                                Description
+                            </label>
+                            <textarea id="description" name="description" class="form-input" rows="4" placeholder="Describe the item's condition, features, and any other relevant details..." required></textarea>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imageUrl" class="form-label">
+                                <i class="fas fa-image"></i>
+                                Image URL (Optional)
+                            </label>
+                            <input type="url" id="imageUrl" name="imageUrl" class="form-input" placeholder="https://example.com/image.jpg">
+                            <span class="form-help">Add a photo to help others see your item</span>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Contact Information</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="donorName" class="form-label">
+                                        <i class="fas fa-user"></i>
+                                        Your Name
+                                    </label>
+                                    <input type="text" id="donorName" name="donorName" class="form-input" required>
+                                    <span class="form-error"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="contactInfo" class="form-label">
+                                        <i class="fas fa-phone"></i>
+                                        Contact Info
+                                    </label>
+                                    <input type="text" id="contactInfo" name="contactInfo" class="form-input" placeholder="Phone or email" required>
+                                    <span class="form-error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location" class="form-label">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Location
+                            </label>
+                            <input type="text" id="location" name="location" class="form-input" placeholder="City, State or Area" required>
+                            <span class="form-help">This helps people find items near them</span>
+                            <span class="form-error"></span>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-large">
+                                <i class="fas fa-heart"></i>
+                                <span class="btn-text">Donate This Item</span>
+                                <div class="btn-loader">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="donation-tips">
+                    <div class="tips-card">
+                        <h3>
+                            <i class="fas fa-lightbulb"></i>
+                            Donation Tips
+                        </h3>
+                        <ul>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Take clear, well-lit photos of your item
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Be honest about the item's condition
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Include all relevant details and dimensions
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                Respond promptly to interested recipients
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="impact-card">
+                        <h3>
+                            <i class="fas fa-heart"></i>
+                            Your Impact
+                        </h3>
+                        <p>By donating, you're not just decluttering – you're helping someone in need, reducing waste, and building stronger communities.</p>
+                        <div class="impact-stats">
+                            <div class="impact-stat">
+                                <strong>1</strong>
+                                <span>Item donated</span>
+                            </div>
+                            <div class="impact-stat">
+                                <strong>1</strong>
+                                <span>Person helped</span>
+                            </div>
+                            <div class="impact-stat">
+                                <strong>∞</strong>
+                                <span>Smiles created</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="message" class="message-popup"></div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-heart"></i>
+                        DonateKart
+                    </div>
+                    <p>Building communities through generosity</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="donate.html">Donate Item</a></li>
+                        <li><a href="items.html">Browse Items</a></li>
+                        <li><a href="my-requests.html">My Requests</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 DonateKart &mdash; Made with ❤️ for a better world
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/user-profile.js"></script>
+    <script src="js/donate.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
